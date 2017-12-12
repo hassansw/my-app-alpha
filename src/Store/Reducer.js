@@ -6,8 +6,10 @@ const initialState = {
 export default function reducer(state = initialState, action ) {
   switch (action.type) {
 
-  case typeName:
-    return { ...state }
+  case increment:
+    return { 
+        
+     }
 
   default:
     return state
