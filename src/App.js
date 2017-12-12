@@ -9,6 +9,22 @@ class App extends Component {
     this.state = {
       counter : 0
     }
+
+    //Binding
+    this.incNumText = this.incNumText.bind(this)
+    this.decNumText = this.decNumText.bind(this)
+  }
+
+  incNumText(){
+    this.setState( (value) => ({
+      counter : value.counter + 1
+    }))
+  }
+
+  decNumText() {
+    this.setState( (value) => ({
+      counter : value.counter - 1
+    }))
   }
 
   render() {
@@ -24,9 +40,9 @@ class App extends Component {
 
         <div>
 
-          <button> Increase </button>
+          <button onClick = {this.incNumText}> Increase </button>
           <h1>{this.state.counter}</h1>
-          <button> Decrease </button>
+          <button onClick = {this.decNumText}> Decrease </button>
           
         </div>
       </div>
