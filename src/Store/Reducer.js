@@ -8,7 +8,7 @@ export default function reducer(state = initialState, action ) {
 
   case increment:
     return { 
-        
+        ...state
      }
 
   default:
