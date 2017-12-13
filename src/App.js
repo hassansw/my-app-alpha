@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Provider, connect}  from 'react-redux'
+import axios from 'axios'
 
 class App extends Component {
 
@@ -12,20 +13,49 @@ class App extends Component {
     }
 
     //Binding
-    this.incNumText = this.incNumText.bind(this)
-    this.decNumText = this.decNumText.bind(this)
+    //this.incNumText = this.incNumText.bind(this)
+    //this.decNumText = this.decNumText.bind(this)
   }
 
-  incNumText(){
-    this.setState( (value) => ({
-      counter : value.counter + 1
-    }))
+
+  //This way it automatically bind it to
+  incNumText = () => {
+    this.setState({
+      counter : this.state.counter + 1
+    })
   }
 
-  decNumText() {
-    this.setState( (value) => ({
-      counter : value.counter - 1
-    }))
+  decNumText = () => {
+    if(this.state.counter > 0){
+      this.setState({
+        counter : this.state.counter - 1
+      })
+    }
+  }
+
+  getDataFromUrl = () => {
+    
+    console.log('Heere')
+    
+    axios.get('http://mmssatc.pk/ais/andro_API/data_logs.php', {
+      params: {
+        user_id: 1
+      }
+    })
+    .then(responseJson => {
+      // responseJson.map((i , d)=>{
+      //   console.log(i + "  " + d)
+      // })
+
+      console.log(Array.from(responseJson.data))
+      // responseJson.data.forEach(element => {
+      //   console.log(element.userAcc_City)
+      // });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
   }
 
   render() {
@@ -41,9 +71,15 @@ class App extends Component {
 
         <div>
 
+          {/*<button onClick = {this.incNumText.bind(this)}> Increase </button>*/}
           <button onClick = {this.incNumText}> Increase </button>
           <h1>{this.state.counter}</h1>
+          {/*<button onClick = {this.decNumText.bind(this)}> Decrease </button>*/}
           <button onClick = {this.decNumText}> Decrease </button>
+          <br/>
+          <br/>
+          <br/>
+          <button onClick = {this.getDataFromUrl}> GetData </button>
           
         </div>
       </div>
