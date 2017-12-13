@@ -5,6 +5,12 @@ class Middleware {
             currNum++;
         }
     }
+
+    static decTextNum (currNum) {
+        return (dispatch) => {
+            currNum--;
+        } 
+    }
     
 }
 

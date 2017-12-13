@@ -10,6 +10,10 @@ export default function reducer(state = initialState, action ) {
     return { 
         ...state
      }
+  case decrement:
+     return {
+       
+     }
 
   default:
     return state
