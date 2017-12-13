@@ -4,16 +4,17 @@ class Action {
     static decrement = decNum
 
 
-    static incrementNum() {
+    static incrementNum(num) {
         return {
-            type : increment
-            
+            type : increment,
+            data : num
         }
     }
-
-    static decrementNum() {
+    
+    static decrementNum(num) {
         return {
-            type : decrement
+            type : decrement,
+            data : num
         }
     }
 }

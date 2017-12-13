@@ -1,3 +1,5 @@
+import Action from './Action'
+
 const initialState = {
     increment : false,
     decrement : false
@@ -6,14 +8,19 @@ const initialState = {
 export default function reducer(state = initialState, action ) {
   switch (action.type) {
 
-  case increment:
-    return { 
-        ...state
-     }
-  case decrement:
-     return {
-        ...state
-     }
+case Action.increment :
+    return Object.assign(
+          {},
+          state,
+          action.num
+        )
+     
+  case Action.decrement:
+     return Object.assign(
+      {},
+      state,
+      action.num
+    )
 
   default:
     return state

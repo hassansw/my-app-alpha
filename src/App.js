@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Provider, connect}  from 'react-redux'
 import axios from 'axios'
+import 
 
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
   //This way it automatically bind it to
   incNumText = () => {
     this.setState({
-      counter : this.state.counter + 1
+      counter : this.state.counter + 1,
     })
   }
 
@@ -43,14 +44,19 @@ class App extends Component {
       }
     })
     .then(responseJson => {
-      // responseJson.map((i , d)=>{
-      //   console.log(i + "  " + d)
-      // })
+      responseJson.map((i , d)=>{
+        console.log(d)
+      })
+
+      this.setState({
+        userData : userData.add
+      })
 
       console.log(Array.from(responseJson.data))
       // responseJson.data.forEach(element => {
       //   console.log(element.userAcc_City)
       // });
+
     })
     .catch(error => {
       console.error(error);
