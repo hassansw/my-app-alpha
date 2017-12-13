@@ -3,14 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import {Provider, connect}  from 'react-redux'
 import axios from 'axios'
-import 
+import { UserLogs } from './Models/UserLogs'
 
 class App extends Component {
 
   constructor() {
     super()
+
     this.state = {
-      counter : 0
+      counter  : 0,
+      userLogs : UserLogs
     }
 
     //Binding
@@ -35,24 +37,20 @@ class App extends Component {
   }
 
   getDataFromUrl = () => {
-    
-    console.log('Heere')
-    
+        
     axios.get('http://mmssatc.pk/ais/andro_API/data_logs.php', {
       params: {
         user_id: 1
       }
     })
     .then(responseJson => {
-      responseJson.map((i , d)=>{
-        console.log(d)
-      })
-
+      
+      console.log(responseJson.data[0])
       this.setState({
-        userData : userData.add
+        userLogs : responseJson.data[0]
       })
 
-      console.log(Array.from(responseJson.data))
+      console.log(this.state.userLogs.userAcc_id)
       // responseJson.data.forEach(element => {
       //   console.log(element.userAcc_City)
       // });
@@ -86,7 +84,7 @@ class App extends Component {
           <br/>
           <br/>
           <button onClick = {this.getDataFromUrl}> GetData </button>
-          
+  
         </div>
       </div>
     );
