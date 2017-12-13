@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state = {
       counter  : 0,
-      userLogs : UserLogs
+      userLogs : []
     }
 
     //Binding
@@ -45,15 +45,26 @@ class App extends Component {
     })
     .then(responseJson => {
       
-      console.log(responseJson.data[0])
+    
+
+      var tempArray = []
+
+      responseJson.data.forEach(element => {
+        tempArray.push(element)
+      });
+
       this.setState({
-        userLogs : responseJson.data[0]
+        userLogs : tempArray
       })
 
-      console.log(this.state.userLogs.userAcc_id)
-      // responseJson.data.forEach(element => {
-      //   console.log(element.userAcc_City)
-      // });
+      var counter = 0;
+      this.state.userLogs.forEach(element => {
+        console.log(element)
+        counter++
+        if (counter==10) {
+          return
+        }
+      });
 
     })
     .catch(error => {
