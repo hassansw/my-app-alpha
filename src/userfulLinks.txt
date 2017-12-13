@@ -1,0 +1,5 @@
+http://cloudmark.github.io/Json-Mapping/
+https://scotch.io/tutorials/better-javascript-with-es6-pt-ii-a-deep-dive-into-classes
+{"userAcc_id":"1","user_id":"1","userAcc_latitude":"24.890964","userAcc_longitude":"67.073732","userAcc_dateTime":"2016-12-10 19:43:07","userAcc_State":"Sindh","userAcc_City":"Karachi"}
+http://www.kjetil-hartveit.com/blog/1/setter-and-getter-generator-for-php-javascript-c%2B%2B-and-csharp
+http://json2ts.com/
