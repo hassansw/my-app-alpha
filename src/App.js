@@ -3,7 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import {Provider, connect}  from 'react-redux'
 import axios from 'axios'
-import { UserLogs } from './Models/UserLogs'
+
+
+
+function mapStateToProp(state){
+  return {
+    componentSate : state
+  }
+}
+
 
 class App extends Component {
 
@@ -11,8 +19,8 @@ class App extends Component {
     super()
 
     this.state = {
-      counter  : 0,
-      userLogs : []
+      counter  : 0
+      //userLogs : []
     }
 
     //Binding
@@ -36,42 +44,40 @@ class App extends Component {
     }
   }
 
-  getDataFromUrl = () => {
+  // getDataFromUrl = () => {
         
-    axios.get('http://mmssatc.pk/ais/andro_API/data_logs.php', {
-      params: {
-        user_id: 1
-      }
-    })
-    .then(responseJson => {
-      
-    
+  //   axios.get('http://mmssatc.pk/ais/andro_API/data_logs.php', {
+  //     params: {
+  //       user_id: 1
+  //     }
+  //   })
+  //   .then(responseJson => {
 
-      var tempArray = []
+  //     var tempArray = []
 
-      responseJson.data.forEach(element => {
-        tempArray.push(element)
-      });
+  //     responseJson.data.forEach(element => {
+  //       tempArray.push(element)
+  //     });
 
-      this.setState({
-        userLogs : tempArray
-      })
+  //     this.setState({
+  //       userLogs : tempArray
+  //     })
 
-      var counter = 0;
-      this.state.userLogs.forEach(element => {
-        console.log(element)
-        counter++
-        if (counter==10) {
-          return
-        }
-      });
+  //     var counter = 0;
+  //     this.state.userLogs.forEach(element => {
+  //       console.log(element)
+  //       counter++
+  //       if (counter==10) {
+  //         return
+  //       }
+  //     });
 
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //   });
 
-  }
+  // }
 
   render() {
     return (
@@ -94,7 +100,7 @@ class App extends Component {
           <br/>
           <br/>
           <br/>
-          <button onClick = {this.getDataFromUrl}> GetData </button>
+          <button > GetData </button>
   
         </div>
       </div>
@@ -102,4 +108,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect (mapStateToProp, null) (App);
